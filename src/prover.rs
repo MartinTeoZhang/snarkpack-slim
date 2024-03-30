@@ -4,7 +4,6 @@ use ark_groth16::Proof;
 use ark_poly::polynomial::{univariate::DensePolynomial, DenseUVPolynomial};
 use ark_std::Zero;
 
-use rayon::prelude::*;
 use std::ops::{AddAssign, MulAssign, Neg};
 
 use super::{

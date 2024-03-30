@@ -5,7 +5,6 @@ use ark_ec::{pairing::Pairing, AffineRepr, CurveGroup, Group};
 use ark_ff::PrimeField;
 use ark_serialize::{CanonicalDeserialize, CanonicalSerialize, SerializationError};
 use ark_std::{rand::Rng, One, UniformRand};
-use sha2::{Digest, Sha256};
 use std::io::{Read, Write};
 
 use std::clone::Clone;
