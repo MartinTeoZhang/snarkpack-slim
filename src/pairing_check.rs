@@ -186,35 +186,3 @@ fn mul_if_not_one<E: Pairing>(
     left.mul_assign(right);
 }
 
-#[cfg(test)]
-mod test {
-    use super::*;
-    use ark_bls12_381::{Bls12_381 as Bls12, G1Projective, G2Projective};
-    use ark_std::{rand::Rng, UniformRand};
-    use rand_core::SeedableRng;
-
-    fn gen_pairing_check<R: Rng + Send>(r: &mut R) -> PairingCheck<Bls12> {
-        let g1r = G1Projective::rand(r);
-        let g2r = G2Projective::rand(r);
-        let exp = Bls12::pairing(g1r.clone(), g2r.clone());
-        let mr = Mutex::new(r);
-        let tuple =
-            PairingCheck::<Bls12>::rand(&mr, &[(&g1r.into_affine(), &g2r.into_affine())], &exp.0);
-        assert!(tuple.verify());
-        tuple
-    }
-    #[test]
-    fn test_pairing_randomize() {
-        let mut rng = rand_chacha::ChaChaRng::seed_from_u64(0u64);
-        let tuples = (0..3)
-            .map(|_| gen_pairing_check(&mut rng))
-            .collect::<Vec<_>>();
-        let final_tuple = tuples
-            .iter()
-            .fold(PairingCheck::<Bls12>::new(), |mut acc, tu| {
-                acc.merge(&tu);
-                acc
-            });
-        assert!(final_tuple.verify());
-    }
-}

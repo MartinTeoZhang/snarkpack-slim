@@ -1,7 +1,6 @@
 use ark_ec::{pairing::Pairing, AffineRepr, CurveGroup, VariableBaseMSM};
 use ark_ff::{Field, One};
 use ark_groth16::Proof;
-use ark_poly::polynomial::{univariate::DensePolynomial, DenseUVPolynomial};
 use ark_std::Zero;
 
 use std::ops::{AddAssign, MulAssign, Neg};
