@@ -27,7 +27,7 @@ serde_json = "1.0"
 
 [features]
 default = ["parallel"]
-std = ["ark-ff/std", "ark-ec/std", "ark-groth16/std", "ark-relations/std", "ark-crypto-primitives/std", "ark-std/std" ]
+std = ["ark-ff/std", "ark-ec/std", "ark-groth16/std", "ark-crypto-primitives/std", "ark-std/std" ]
 parallel = ["std", "ark-ff/parallel", "ark-poly/parallel", "ark-groth16/parallel", "ark-ec/parallel", "ark-crypto-primitives/parallel", "ark-std/parallel", "rayon"]
 
 [lib]
