@@ -1,18 +1,11 @@
-use ark_ec::scalar_mul::fixed_base::FixedBase;
-// msm::FixedBaseMSM;
-use ark_ec::{pairing::Pairing, AffineRepr, CurveGroup, Group};
+
+use ark_ec::{pairing::Pairing };
 // {AffineCurve, PairingEngine, ProjectiveCurve};
-use ark_ff::PrimeField;
+
 use ark_serialize::{CanonicalDeserialize, CanonicalSerialize, SerializationError};
-use ark_std::{rand::Rng, One, UniformRand};
-use std::io::{Read, Write};
 
-use std::clone::Clone;
 
-use super::commitment::{VKey, WKey};
-use crate::Error;
 
-use std::ops::MulAssign;
 /// Maximum size of the generic SRS constructed from Filecoin and Zcash power of
 /// taus.
 ///
